@@ -30,7 +30,7 @@ jobs:
 
       # Install Railway CLI
       - name: Install Railway CLI
-        run: npm install -g railway
+        run: npm install -g @railway/cli
 
       # Verificar la instalación de Railway CLI
       - name: Verify Railway CLI version
