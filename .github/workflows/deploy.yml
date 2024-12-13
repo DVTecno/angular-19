@@ -1,4 +1,3 @@
-
 name: Deploy Angular to Railway
 
 on:
@@ -15,11 +14,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-     # Set up Node.js (versión 22.12.0)
+      # Set up Node.js (versión 18)
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22.12.0'
+          node-version: '18'
 
       # Install dependencies
       - name: Install Dependencies
@@ -29,9 +28,18 @@ jobs:
       - name: Build Angular App
         run: npm run build -- --configuration production
 
-           # Deploy to Railway
+      # Install Railway CLI
+      - name: Install Railway CLI
+        run: npm install -g railway
+
+      # Verificar la instalación de Railway CLI
+      - name: Verify Railway CLI version
+        run: railway --version
+
+      # Deploy to Railway
       - name: Deploy to Railway
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_API_TOKEN }}
         run: railway up --project "outstanding-reflection" --service "angular-18"
+
 
