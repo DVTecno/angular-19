@@ -30,9 +30,6 @@ jobs:
 
       # Deploy to Railway
       - name: Deploy to Railway
-        uses: railwayapp/cli-action@v2
-        with:
-          token: ${{ secrets.RAILWAY_API_TOKEN }}
-          serviceName: "nombre-de-tu-servicio"
-          buildCommand: "npm run build -- --configuration production"
-          startCommand: "serve -s dist/tu-nombre-de-app"
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_API_TOKEN }}
+        run: railway up --project "outstanding-reflection" --service "angular-18"
