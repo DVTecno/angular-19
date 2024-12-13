@@ -18,11 +18,15 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-           node-version: '18'
+          node-version: '18'
 
       # Install dependencies
       - name: Install Dependencies
         run: npm install
+
+      # Install Railway CLI
+      - name: Install Railway CLI
+        run: npm install -g railway
 
       # Build the Angular project
       - name: Build Angular App
