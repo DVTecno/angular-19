@@ -1,0 +1,44 @@
+name: Deploy Angular to Railway
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # Set up Node.js (versión 18)
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      # Install dependencies
+      - name: Install Dependencies
+        run: npm install
+
+      # Build the Angular project
+      - name: Build Angular App
+        run: npm run build -- --configuration production
+
+      # Install the latest Railway CLI
+      - name: Install Railway CLI
+        run: npm install -g @railway/cli
+
+      # Verificar la instalación de Railway CLI
+      - name: Verify Railway CLI version
+        run: railway --version
+
+      # Deploy to Railway
+       # Deploy to Railway
+      - name: Deploy to Railway
+        run: railway up
+
+
