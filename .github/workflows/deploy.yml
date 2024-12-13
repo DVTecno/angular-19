@@ -14,23 +14,23 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      # Set up Node.js
+      # Set up Node.js (versión 22.12.0)
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '22.12.0'
 
       # Install dependencies
       - name: Install Dependencies
         run: npm install
 
-      # Install Railway CLI
-      - name: Install Railway CLI
-        run: npm install -g railway
-
       # Build the Angular project
       - name: Build Angular App
         run: npm run build -- --configuration production
+
+      # Install Railway CLI
+      - name: Install Railway CLI
+        run: npm install -g railway
 
       # Deploy to Railway
       - name: Deploy to Railway
