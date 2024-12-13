@@ -1,1 +1,5 @@
 <p>product-list works!</p>
+
+@for(product of productsState.state().products; track product) {
+  <P>{{ product.title }}</P>
+}
