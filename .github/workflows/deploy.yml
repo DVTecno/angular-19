@@ -1,3 +1,4 @@
+
 name: Deploy Angular to Railway
 
 on:
@@ -27,10 +28,6 @@ jobs:
       # Build the Angular project
       - name: Build Angular App
         run: npm run build -- --configuration production
-
-      # Install Railway CLI
-      - name: Install Railway CLI
-        run: npm install -g railway
 
            # Deploy to Railway
       - name: Deploy to Railway
