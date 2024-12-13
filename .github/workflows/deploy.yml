@@ -29,10 +29,7 @@ jobs:
 
       - name: Verify Railway CLI version
         run: railway --version
-
-      - name: Login to Railway
-        run: railway login --token ${{ secrets.RAILWAY_TOKEN }}
-
+        
       - name: Deploy to Railway
         run: railway up --service angular-18
 
