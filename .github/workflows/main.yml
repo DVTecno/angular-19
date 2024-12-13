@@ -37,8 +37,9 @@ jobs:
         run: railway --version
 
       # Deploy to Railway
-      - name: Deploy to Railway
-        run: railway up --service angular-18
+      - name: Debug RAILWAY_TOKEN
+        run: echo $RAILWAY_TOKEN
         env:
           RAILWAY_TOKEN: ${{ secrets.secrets }}
+
 
