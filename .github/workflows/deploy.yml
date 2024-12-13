@@ -32,6 +32,7 @@ jobs:
 
       - name: Deploy to Railway
         env:
-          RAILWAY_TOKEN: ${{ secrets.secrets }}
+         RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
         run: railway up --service angular-18
+
 
