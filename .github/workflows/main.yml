@@ -32,12 +32,13 @@ jobs:
       - name: Install Railway CLI
         run: npm install -g @railway/cli
 
-      # Verificar la instalación de Railway CLI
-      - name: Verify Railway CLI version
-        run: railway --version
+      # Set Railway Token
+      - name: Set Railway Token
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_API_TOKEN }}
 
       # Deploy to Railway
       - name: Deploy to Railway
-        run: railway up
-
-
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_API_TOKEN }}
+        run: railway up --service angular-18
