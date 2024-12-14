@@ -37,7 +37,6 @@ jobs:
         run: railway --version
 
       # Deploy to Railway
-       # Deploy to Railway
       - name: Deploy to Railway
         run: railway up
 
