@@ -9,11 +9,3 @@
 body {
   @apply bg-black
 } */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Otros estilos globales */
-body {
-  font-family: 'Inter', sans-serif;
-}
