@@ -2,10 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   color-scheme: dark light;
 }
 
 body {
   @apply bg-black
+} */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Otros estilos globales */
+body {
+  font-family: 'Inter', sans-serif;
 }
