@@ -28,7 +28,7 @@ jobs:
       - name: Build Angular App	
         run: npm run build -- --configuration production	
 
-      # Install the latest Railway CLI	
+      # Install the latest Railway CL
       - name: Install Railway CLI	
         run: npm install -g @railway/cli	
 
