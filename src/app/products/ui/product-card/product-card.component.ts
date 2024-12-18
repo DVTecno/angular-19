@@ -1,5 +1,5 @@
-import { Component, input } from '@angular/core';
-import { Product } from '../../../shared/interfaces/product.interface';
+import { Product } from './../../../shared/interfaces/product.interface';
+import { Component, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
@@ -12,6 +12,15 @@ import { RouterLink } from '@angular/router';
 })
 export class ProductCardComponent {
   product = input.required<Product>();
+
+  addToCart = output<Product>();
+
+  add(event: Event) {
+    event.stopPropagation();
+    event.preventDefault();
+    this.addToCart.emit(this.product());
+  }
+
   // get fullStars() {
   //   return Math.floor(this.product().rating.rate);
   // }
