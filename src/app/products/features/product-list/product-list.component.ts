@@ -1,19 +1,18 @@
-import { Product } from './../../../shared/interfaces/product.interface';
-import { inject } from '@angular/core';
-
-import { Component } from '@angular/core';
-import { ProductsStateService } from '../data-access/products.state.service';
+import { Component, inject } from '@angular/core';
+import { ProductsSateService } from '../../data-access/products-state.service';
 import { ProductCardComponent } from '../../ui/product-card/product-card.component';
-import { CartStateService } from '../../../shared/data-access/cart-state-service';
+import { CartStateService } from '../../../shared/data-access/cart-state.service';
+import { Product } from '../../../shared/interfaces/product.interface';
 
 @Component({
   selector: 'app-product-list',
+  standalone: true,
   imports: [ProductCardComponent],
   templateUrl: './product-list.component.html',
-  providers: [ProductsStateService]
+  providers: [ProductsSateService],
 })
 export default class ProductListComponent {
-  productsState = inject(ProductsStateService);
+  productsState = inject(ProductsSateService);
   cartState = inject(CartStateService).state;
 
   changePage() {
@@ -22,7 +21,9 @@ export default class ProductListComponent {
   }
 
   addToCart(product: Product) {
-    this.cartState.add({product,quantity: 1
+    this.cartState.add({
+      product,
+      quantity: 1,
     });
   }
 }

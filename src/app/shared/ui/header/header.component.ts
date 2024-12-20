@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
-import { RouterLinkActive, RouterModule } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { CartStateService } from '../../data-access/cart-state.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterModule, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './header.component.html',
-  styles: ``
+  styles: ``,
 })
 export class HeaderComponent {
-
+  cartState = inject(CartStateService).state;
 }

@@ -1,8 +1,8 @@
-import { ProductItemCart } from './../interfaces/product.interface';
-import { inject, Injectable, Signal } from "@angular/core";
-import { signalSlice } from "ngxtension/signal-slice";
-import { StorageService } from "./storage.service";
-import { map, Observable } from "rxjs";
+import { Injectable, Signal, inject } from '@angular/core';
+import { ProductItemCart } from '../interfaces/product.interface';
+import { signalSlice } from 'ngxtension/signal-slice';
+import { StorageService } from './storage.service';
+import { Observable, map } from 'rxjs';
 
 interface State {
   products: ProductItemCart[];
@@ -10,9 +10,8 @@ interface State {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class CartStateService {
   private _storageService = inject(StorageService);
 
