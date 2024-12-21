@@ -1,32 +1,80 @@
 <div class="mx-auto max-w-screen-xl">
   @switch (productsState.state.status()) {
-    @case ("loading") {
-      <p>Loading...</p>
-    }
-    @case ("error") {
-      <p>Error</p>
-    }
-
-    @default {
-      <div class="flex justify-end my-6">
-        <button
-          type="button"
-          (click)="changePage()"
-          class="text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-blue-800"
-        >
-          Cambiar pagina
-        </button>
+  @case ("loading") {
+  <div class="col-span-4 mx-auto w-full max-w-xs">
+    <div role="status"
+      class="w-60 max-w-xs border rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 animate-pulse mt-12">
+      <div class="flex items-center justify-center h-60 mb-4 bg-gray-300 rounded-tl-sm dark:bg-gray-700">
+        <svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor" viewBox="0 0 16 20">
+          <path
+            d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
+          <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
+        </svg>
       </div>
-
-      <div class="grid grid-cols-[repeat(4,300px)] gap-6">
-        @for (product of productsState.state().products; track product) {
-          <app-product-card
-            class="block"
-            [product]="product"
-            (addToCart)="addToCart($event)"
-          />
-        }
+      <div class="px-5 pb-5 mt-5">
+        <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-600 w-48 mb-4"></div>
+        <div class="h-2 bg-gray-300 rounded-full dark:bg-gray-700 mb-2.5"></div>
+        <div class="h-2 bg-gray-300 rounded-full dark:bg-gray-700 mb-2.5"></div>
+        <div class="flex items-center mt-2.5 mb-5">
+          <div class="flex items-center space-x-1 rtl:space-x-reverse">
+            <svg class="w-4 h-4 text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+              viewBox="0 0 22 20">
+              <path
+                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+            </svg>
+            <svg class="w-4 h-4 text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+              viewBox="0 0 22 20">
+              <path
+                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+            </svg>
+            <svg class="w-4 h-4 text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+              viewBox="0 0 22 20">
+              <path
+                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+            </svg>
+            <svg class="w-4 h-4 text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+              viewBox="0 0 22 20">
+              <path
+                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+            </svg>
+            <svg class="w-4 h-4 text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+              viewBox="0 0 22 20">
+              <path
+                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+            </svg>
+            <span class="h-2 bg-gray-200 rounded-full dark:bg-gray-600 w-16"></span>
+          </div>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="h-6 bg-gray-300 rounded-full dark:bg-gray-600 w-24"></span>
+          <span class="h-6 bg-gray-300 rounded-full dark:bg-gray-600 w-20"></span>
+        </div>
       </div>
-    }
+    </div>
+  </div>
+  }
+  @case ("error") {
+  <p class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">Error</p>
+  }
+  @default {
+  <div class="mx-auto max-w-screen-xl">
+    <div class="flex justify-end fixed bottom-5 right-5">
+      <button type="button" (click)="changePage()"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M1 5h12m0 0L9 1m4 4L9 9" />
+        </svg>
+        <span class="sr-only">Adelante</span>
+      </button>
+    </div>
+    <div class="grid grid-cols-[repeat(4,300px)] gap-4 mb-5">
+      @for (product of productsState.state().products; track product) {
+      <app-product-card class="block" [product]="product" (addToCart)="addToCart($event)" />
+      }
+    </div>
+  </div>
+  }
   }
 </div>
